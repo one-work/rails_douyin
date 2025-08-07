@@ -1,0 +1,7 @@
+<div class="fixed-grid">
+  <div class="grid">
+    <%= link_to({ controller: 'douyin/panel/apps' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: ['apps'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+      <span><%= t('douyin.panel.apps.index.title') %></span>
+    <% end %>
+  </div>
+</div>

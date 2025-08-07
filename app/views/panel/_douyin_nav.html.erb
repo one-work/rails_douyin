@@ -1,9 +1,0 @@
-<div class="menu-list">
-  <a class="menu-item">
-    <i class="fa-brands fa-fw fa-weixin"></i>
-    <span><%= t('douyin.panel.title') %></span>
-  </a>
-  <div class="pl-4">
-    <%= link_to t('douyin.panel.apps.index.title'), { controller: 'douyin/panel/apps' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['apps'], item: 'menu-item', active: 'menu-item is-active') %>
-  </div>
-</div>
