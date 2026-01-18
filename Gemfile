@@ -6,9 +6,9 @@ gem 'pg'
 gem 'puma'
 gem 'propshaft'
 
-gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_org', github: 'work-design/rails_org'
-gem 'rails_design', github: 'work-design/rails_design'
+gem 'rails_com', path: '../rails_com'
+gem 'rails_org', path: '../rails_org'
+gem 'rails_ui', path: '../rails_ui'
 
 group :development do
   gem 'sdoc'
