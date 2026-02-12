@@ -25,7 +25,7 @@ module Douyin
         client_key: appid,
         response_type: 'code',
         scope: 'user_info',
-        redirect_uri: Rails.application.routes.url_for(controller: 'douyin/apps')
+        redirect_uri: Rails.app.routes.url_for(controller: 'douyin/apps')
       }
 
       "https://open.douyin.com/platform/oauth/connect?#{h.to_query}"
