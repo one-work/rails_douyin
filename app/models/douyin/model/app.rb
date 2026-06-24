@@ -18,6 +18,7 @@ module Douyin
 
       has_many :shops, primary_key: :appid, foreign_key: :appid
       has_many :orders, primary_key: :appid, foreign_key: :appid
+      has_many :douyin_users, primary_key: :appid, foreign_key: :appid
     end
 
     def oauth_url
@@ -29,6 +30,19 @@ module Douyin
       }
 
       "https://open.douyin.com/platform/oauth/connect?#{h.to_query}"
+    end
+
+    def generate_douyin_user(anonymous_code, code)
+      result = api.code_to_session(anonymous_code, code)
+      logger.debug "\e[35m  Public App Generate User: #{result}  \e[0m"
+
+      return unless result.key? 'openid'
+      wechat_user = DouyinUser.find_or_initialize_by(uid: result['openid'])
+      wechat_user.appid = appid
+      wechat_user.assign_attributes result.slice('access_token', 'refresh_token', 'scope', 'unionid')
+      wechat_user.expires_at = Time.current + result['expires_in'].to_i
+      wechat_user.init_user
+      wechat_user
     end
 
     def access_token_valid?

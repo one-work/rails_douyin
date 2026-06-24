@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+class Douyin::Program
+  module Base
+    BASE = 'https://developer.toutiao.com/api/apps/v2/'
+
+    def code_to_session(anonymous_code, code)
+      r = client.with_headers('Content-Type': 'application/json').with(origin: BASE).post(
+        'jscode2session',
+        anonymous_code: anonymous_code,
+        code: code,
+        appid: @app.appid,
+        secret: @app.secret,
+        origin: BASE
+      )
+      r['data']
+    end
+
+  end
+end

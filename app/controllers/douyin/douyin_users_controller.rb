@@ -5,9 +5,8 @@ module Douyin
     skip_before_action :verify_authenticity_token if whether_filter(:verify_authenticity_token)
 
     def create
-      @program_user = @app.generate_wechat_user(params[:code])
+      @program_user = @app.generate_douyin_user(params[:anonymousCode], params[:code])
       @program_user.save!
-      @program_user.auth_appid = params[:auth_appid]
 
       headers['Authorization'] = @program_user.auth_token
       @result = {
@@ -54,7 +53,7 @@ module Douyin
 
     private
     def set_app
-      @app = App.find_by(appid: params[:appid]) || Agency.find_by(appid: params[:appid])
+      @app = App.find_by(appid: params[:appid])
     end
 
     def set_wechat_program_user
