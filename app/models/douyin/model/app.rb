@@ -39,8 +39,7 @@ module Douyin
       return unless result.key? 'openid'
       wechat_user = DouyinUser.find_or_initialize_by(uid: result['openid'])
       wechat_user.appid = appid
-      wechat_user.assign_attributes result.slice('access_token', 'refresh_token', 'scope', 'unionid')
-      wechat_user.expires_at = Time.current + result['expires_in'].to_i
+      wechat_user.assign_attributes result.slice('unionid')
       wechat_user.init_user
       wechat_user
     end

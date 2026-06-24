@@ -15,7 +15,7 @@ module Douyin::Program
         }.to_json
       )
       logger.debug "\e[35m  Code to login: #{r.to_s}  \e[0m"
-      r
+      r.json['data']
     end
 
   end
