@@ -13,7 +13,8 @@ module Douyin::Program
         secret: @app.secret,
         origin: BASE
       )
-      r['data']
+      logger.debug "\e[35m  Code to login: #{r.json}  \e[0m"
+      r.json['data']
     end
 
   end
