@@ -1,0 +1,6 @@
+zh:
+  activerecord:
+    enum:
+      auth/oauth_user:
+        type:
+          Douyin::DouyinUser: 抖音
