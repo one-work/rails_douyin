@@ -21,6 +21,15 @@ module Douyin
       has_many :douyin_users, primary_key: :appid, foreign_key: :appid
     end
 
+    def url
+      Rails.app.routes.url_for(
+        controller: 'douyin/apps',
+        action: 'show',
+        appid: self.appid,
+        only_path: false
+      )
+    end
+
     def oauth_url
       h = {
         client_key: appid,
