@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Douyin::Program
+module Douyin::Program
   module Base
     BASE = 'https://developer.toutiao.com/api/apps/v2/'
 
