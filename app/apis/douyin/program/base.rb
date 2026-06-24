@@ -7,11 +7,12 @@ module Douyin::Program
     def code_to_session(anonymous_code, code)
       r = client.with_headers('Content-Type': 'application/json').with(origin: BASE).post(
         'jscode2session',
-        anonymous_code: anonymous_code,
-        code: code,
-        appid: @app.appid,
-        secret: @app.secret,
-        origin: BASE
+        body: {
+          anonymous_code: anonymous_code,
+          code: code,
+          appid: @app.appid,
+          secret: @app.secret
+        }.to_json
       )
       logger.debug "\e[35m  Code to login: #{r.to_s}  \e[0m"
       r
