@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   namespace :douyin, defaults: { business: 'douyin' } do
     resources :apps, param: :appid do
       member do
